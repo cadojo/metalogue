@@ -1,0 +1,12 @@
+[package]
+name = "metalogue"
+version = "0.0.0"
+publish.workspace = true
+edition.workspace = true
+
+[dependencies]
+objc2-metal = "0.3.2"
+objc2 = "0.6.3"
+objc2-foundation = "0.3.2"
+block2 = "0.6.1"
+dispatch2 = "0.3.0"

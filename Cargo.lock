@@ -98,3 +98,10 @@ dependencies = [
  "objc2-core-foundation",
  "objc2-foundation",
 ]
+
+[[package]]
+name = "tests"
+version = "0.0.0"
+dependencies = [
+ "metalogue",
+]

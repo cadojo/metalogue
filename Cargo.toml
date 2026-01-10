@@ -1,11 +1,7 @@
-[package]
-name = "metalogue"
-version = "0.0.0"
-edition = "2024"
+[workspace]
+resolver = "3"
+members = ["crates/*", "tests"]
 
-[dependencies]
-objc2-metal = "0.3.2"
-objc2 = "0.6.3"
-objc2-foundation = "0.3.2"
-block2 = "0.6.1"
-dispatch2 = "0.3.0"
+[workspace.package]
+publish = false
+edition = "2024"

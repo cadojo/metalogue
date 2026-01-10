@@ -1,0 +1,12 @@
+[package]
+name = "tests"
+version = "0.0.0"
+publish = false
+edition.workspace = true
+
+[dev-dependencies]
+metalogue = { path = "../crates/metalogue" }
+
+[[test]]
+name = "gpu_compute"
+path = "gpu_compute.rs"
