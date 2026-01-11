@@ -9,6 +9,7 @@
   "pull-request-title-pattern": "release: v${version}",
   "prerelease": true,
   "release-type": "rust",
+  "release-as": "0.0.1",
   "initial-version": "0.0.1",
   "packages": {
     "crates/metalogue": {}
