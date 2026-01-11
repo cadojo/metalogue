@@ -162,10 +162,10 @@ impl<T: Copy> Buffer<T> {
         })
     }
 
-    /// Creates an uninitialized buffer with space for `len` elements.
+    /// Creates a buffer with space for `len` elements.
     ///
     /// Use this for output buffers that will be written by the GPU.
-    pub fn uninit(device: &Device, len: usize) -> Result<Self, Error> {
+    pub fn with_len(device: &Device, len: usize) -> Result<Self, Error> {
         let byte_len = (len * std::mem::size_of::<T>()).max(1);
 
         let inner = device

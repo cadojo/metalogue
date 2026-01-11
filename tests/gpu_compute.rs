@@ -107,13 +107,13 @@ fn test_add_arrays_safe() {
         .to_pipeline()
         .expect("failed to create pipeline");
 
-    // create buffers (no unsafe!)
+    // create buffers
     let buffer_a =
         Buffer::from_slice(&device, &[1.0_f32, 2.0, 3.0, 4.0]).expect("failed to create buffer a");
     let buffer_b = Buffer::from_slice(&device, &[10.0_f32, 20.0, 30.0, 40.0])
         .expect("failed to create buffer b");
     let buffer_result: Buffer<f32> =
-        Buffer::uninit(&device, 4).expect("failed to create result buffer");
+        Buffer::with_len(&device, 4).expect("failed to create result buffer");
 
     // create command queue and compute pass
     let queue = device.create_queue().expect("failed to create queue");
