@@ -12,7 +12,7 @@ repos:
     rev: v0.0.166
     hooks:
       - id: rumdl
-        args: [--force-exclude, --fix]
+        args: [--force-exclude, --config, .rumdl.toml, --fix]
   - repo: https://github.com/crate-ci/typos
     rev: v1.38.1
     hooks:
