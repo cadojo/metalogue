@@ -9,7 +9,7 @@ use metalogue::objc2_foundation::*;
 use metalogue::objc2_metal::*;
 use metalogue::{Buffer, Device, Kernel};
 
-const ADDER_METAL: &str = include_str!("kernels/adder.metal");
+const ADDER_METAL: &str = include_str!("../kernels/adder.metal");
 
 #[test]
 fn test_add_arrays() {

@@ -1,7 +1,10 @@
 [workspace]
 resolver = "3"
-members = ["crates/*", "tests"]
+members = ["crates/*", "tests", "benches"]
 
 [workspace.package]
 publish = false
 edition = "2024"
+
+[workspace.dependencies]
+criterion = { version = "0.7", features = ["html_reports"] }
