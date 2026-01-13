@@ -3,7 +3,7 @@
 *Today: vaporware; tomorrow: safe and simple abstractions around Apple's Metal API.*
 
 > [!CAUTION]
-> This project is currently experimental and unstable!
+> This project is currently **experimental** and **unstable**!
 
 ## Motivation
 
@@ -18,4 +18,6 @@ With `metalogue`, developers can compile kernels, allocate memory with various s
 
 ## Usage
 
-More documentation is en route!
+Currently, this project is a collection of microbenchmarks in [`benches/`](benches/); the collection is not large!
+The benchmarks show high-level abstractions provided by [`metalogue`](crates/metalogue/).
+Each abstraction will be refined as benchmarks are built-out, and as my understanding of Apple Silicon grows.
