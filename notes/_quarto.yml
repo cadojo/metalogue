@@ -1,0 +1,22 @@
+project:
+  type: book
+
+book:
+  title: "Notes on Parallel Programming with Apple Silicon"
+  author: "Joey Carpinelli"
+  date: "2026-01"
+  date-format: "MMMM YYYY"
+
+  chapters:
+    - index.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    csl: https://raw.githubusercontent.com/citation-style-language/styles/refs/heads/master/association-for-computing-machinery.csl
+    cover-image: img/programming-massively-parallel-processors-4e-cover.jpg
+    theme:
+      - cosmo
+      - brand

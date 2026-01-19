@@ -1,0 +1,30 @@
+# Preface {.unnumbered}
+
+*Programming Massively Parallel Processors* is widely considered essential reading for GPU programmers.
+The book, a relatively thin paperback with an orange cover, contains over a dozen chapters which cumulatively present fundamental concepts in GPU hardware and software, an overview of parallel execution and memory models, performance factors, and intermediate to advanced parallel programming patterns; the 4th edition includes new content in four additional chapters: scheduling, the stencil pattern, reduction optimizations, and sorting algorithms adapted to parallel processors.
+The textbook focuses on [CUDA](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html), but explicitly states that the presented concepts are relevant to parallel programming in general @textbook.
+
+> Although the chapters throughout this book are based on CUDA, they help the readers to build up the foundation for parallel programming in general.
+> We believe that humans understand best when we learn from concrete examples.
+> That is, we must first learn the concepts in the concext of a particular programming model, which provides us with solid footing when we generalize our knowledge to other programing models.
+> As we do so, we can draw on our concrete experience from the CUDA examples.
+> In-depth experience with CUDA also enables us to gain maturity, which will help us to learn concepts that may not even be pertinent to the CUDA model.
+
+The final line in the quote above is particularly relevant for Apple Silicon programmers.
+Apple Silicon differs from Nvidia hardware, particularly in its use of **unified memory**; the CPU and GPU both share access to the same dynamic random-access memory (DRAM); this allows developers to skip memory copy steps which are common to naive CUDA kernels.
+
+This note-set walks through select chapters of *Programming Massively Parallel Processors*, with examples modified to apply directly to Apple Silicon.
+To do so, Apple's open-source array framework --- [MLX](https://opensource.apple.com/projects/mlx/) --- is used in illustrative code examples.
+All examples are **executable**, thanks to the [Quarto](https://quarto.org) literate programming framework in which this note-set was written.
+To run each example, you can install MLX directly using the Git source control and [`uv`](https://astral.sh/uv) package manager commands below to open an [IPython REPL](https://ipython.readthedocs.io/en/stable/index.html) with similar[^similar] package dependency versions which were used to execute examples in the rendering of this note-set.
+Alternatively, you can try executing each example in your own Python environment with `mlx` installed; versions should be stable enough that all code examples in this note-set are executable for any recent Python release.
+
+[^similar]: We must say *similar* package dependency versions because package versions may change slightly for different operating systems and Python versions.
+
+
+```{.bash #lst-setup lst-cap="Installation Instructions"}
+git clone -b stable https://github.com/cadojo/metalogue
+cd metalogue
+uv sync
+uv run ipython
+```
