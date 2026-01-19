@@ -9,12 +9,12 @@ repos:
       - id: check-json
       - id: check-added-large-files
   - repo: https://github.com/rvben/rumdl-pre-commit
-    rev: v0.0.166
+    rev: v0.0.221
     hooks:
       - id: rumdl
         args: [--force-exclude, --config, .rumdl.toml, --fix]
   - repo: https://github.com/crate-ci/typos
-    rev: v1.38.1
+    rev: v1.42.1
     hooks:
       - id: typos
         args: [--write-changes, --force-exclude, --config, .typos.toml]
