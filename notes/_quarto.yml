@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "Notes on Parallel Programming with Apple Silicon"
+  title: "Notes on Programming Apple Silicon"
   author: "Joey Carpinelli"
   date: "2026-01"
   date-format: "MMMM YYYY"
