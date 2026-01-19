@@ -12,7 +12,7 @@
   "initial-version": "0.0.1",
   "packages": {
     "crates/metalogue": {
-      "extra-files": ["notes/pyproject.toml"]
+      "extra-files": ["pyproject.toml"]
     }
   },
   "plugins": [
