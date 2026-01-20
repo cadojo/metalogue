@@ -16,6 +16,6 @@ bibliography: references.bib
 format:
   html:
     csl: https://raw.githubusercontent.com/citation-style-language/styles/refs/heads/master/association-for-computing-machinery.csl
-    cover-image: img/programming-massively-parallel-processors-4e-cover.jpg
+    cover-image: https://secure-ecsd.elsevier.com/covers/80/Tango2/original/9780323912310.jpg
     theme:
       - cosmo
