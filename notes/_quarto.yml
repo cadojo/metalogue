@@ -9,6 +9,9 @@ book:
 
   chapters:
     - index.qmd
+    - part: fundamentals/index.qmd
+      chapters:
+        - fundamentals/multi-device-programming.qmd
     - references.qmd
 
 bibliography: references.bib

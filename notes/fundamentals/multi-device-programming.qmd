@@ -1,0 +1,11 @@
+---
+title: Multi-Device Programming
+
+aliases:
+  - /fundamentals/multi-device-programming/
+---
+
+## Introduction to GPU Programming
+
+GPU programming involves a host processor (typically the CPU), and the device (the GPU).
+To compute work on the GPU, programmers must provide data, a top-level function which accepts input arguments (known as the *kernel*), and execution parameters for the scheduler to use to distribute execution across threadgroups and threads.

@@ -1,0 +1,5 @@
+---
+title: Fundamentals
+---
+
+The following chapters show core concepts in parallel computing, with examples adapted to Apple Silicon GPU programming.

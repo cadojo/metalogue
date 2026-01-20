@@ -8,6 +8,3 @@ dependencies = [
     "mlx>=0.30.3",
     "quarto>=0.1.0",
 ]
-
-[tool.uv]
-publish = false
