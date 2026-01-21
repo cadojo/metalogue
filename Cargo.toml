@@ -1,10 +1,25 @@
-[workspace]
-resolver = "3"
-members = ["crates/*", "tests", "benches"]
-
-[workspace.package]
+[package]
+name = "metalogue"
+version = "0.0.1"
 publish = false
 edition = "2024"
 
-[workspace.dependencies]
+[lib]
+name = "metalogue"
+# cdylib for Python bindings, rlib for Rust usage
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# Core Metal dependencies
+objc2-metal = "0.3.2"
+objc2 = "0.6.3"
+objc2-foundation = "0.3.2"
+block2 = "0.6.1"
+dispatch2 = "0.3.0"
+
+# Python bindings (optional)
+pyo3 = { version = "0.27.0", optional = true }
 criterion = { version = "0.7", features = ["html_reports"] }
+
+[features]
+default = ["pyo3"]

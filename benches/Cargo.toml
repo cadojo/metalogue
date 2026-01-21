@@ -1,12 +1,10 @@
 [package]
 name = "benches"
-publish = false
+publish.workspace = true
 edition.workspace = true
 
 [dependencies]
-metalogue = { path = "../crates/metalogue" }
-
-[dev-dependencies]
+metalogue = { path = "..", default-features = false }
 criterion.workspace = true
 
 [[bench]]

@@ -1,9 +1,4 @@
-//! Metal compute utilities for GPU programming.
-
-// Only Apple computers with M-series chips are supported.
-#![cfg(target_os = "macos")]
-
-mod error;
+//! Core Metal compute utilities for GPU programming.
 
 use std::marker::PhantomData;
 use std::path::Path;
@@ -11,10 +6,7 @@ use std::path::Path;
 use objc2_metal::{MTLBuffer, MTLCommandBuffer, MTLCommandEncoder, MTLCommandQueue};
 use objc2_metal::{MTLComputeCommandEncoder, MTLDevice, MTLLibrary};
 
-pub use error::Error;
-pub use objc2;
-pub use objc2_foundation;
-pub use objc2_metal;
+use crate::error::Error;
 
 /// A handle to a GPU device.
 pub struct Device(objc2::rc::Retained<objc2::runtime::ProtocolObject<dyn objc2_metal::MTLDevice>>);

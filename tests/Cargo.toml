@@ -1,10 +1,10 @@
 [package]
 name = "tests"
-publish = false
+publish.workspace = true
 edition.workspace = true
 
 [dev-dependencies]
-metalogue = { path = "../crates/metalogue" }
+metalogue = { path = "..", default-features = false }
 
 [[test]]
 name = "gpu_compute"
