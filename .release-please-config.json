@@ -11,7 +11,7 @@
   "release-type": "rust",
   "initial-version": "0.0.1",
   "packages": {
-    "crates/metalogue": {
+    ".": {
       "extra-files": ["pyproject.toml"]
     }
   },
