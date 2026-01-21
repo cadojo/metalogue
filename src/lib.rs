@@ -1,7 +1,7 @@
 //! Metal compute utilities for GPU programming with Python bindings.
 
 // The core library only works on macOS
-#![cfg(target_os = "macos")]
+#![cfg(all(target_os = "macos", target_arch = "aarch64"))]
 
 mod core;
 mod error;
