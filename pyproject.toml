@@ -14,3 +14,9 @@ dynamic = ["version"]
 
 [tool.maturin]
 python-source = "pyo3"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+    "ty>=0.0.12",
+]

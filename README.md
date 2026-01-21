@@ -21,21 +21,21 @@ With `metalogue-v0.0.1`, developers can compile kernels, allocate memory with va
 As it turns out, Apple has already more than met this need (and more) with its array framework [MLX](https://opensource.apple.com/projects/mlx).
 Via MLX, developers in Python, Swift, Objective-C, C, and any other language which interacts with the C API, can stream instructions to Apple Silicon CPU and GPU devices and utilize algorithm-specific optimization packages.
 **There's no need to develop safe software abstractions for Apple Silicon hardware: Apple's research team has already done this for us.**
+Still, to **benchmark** kernels on Apple Silicon, it helps to hand-write kernel code.
+For this purpose, `metalogue` provides a Rust API with Python bindings for compiling and executing Metal kernels.
 
 To continue growing as a GPU programmer, and to use that effort to build a resource that's (hopefully) helpful to the larger device programming community, this project's content and purpose has changed.
-Instead of developing safe abstractions, this project will aim to *use* safe abstractions provided by `mlx` to apply lessons from an essential textbook --- [Programming Massively Parallel Processors](https://shop.elsevier.com/books/programming-massively-parallel-processors/hwu/978-0-323-91231-0) --- directly to Apple Silicon.
+Instead of developing safe abstractions, this project will aim to *use* safe abstractions provided by `mlx` and `metalogue` to apply lessons from an essential textbook --- [Programming Massively Parallel Processors](https://shop.elsevier.com/books/programming-massively-parallel-processors/hwu/978-0-323-91231-0) --- directly to Apple Silicon.
 Examples will be available as source-code, and within a note-set that accompanies the reference textbook for Apple Silicon programmers.
 
 ## Usage
 
 Today, very little example content exists.
 Please follow along as the note-set is written here, with rendered content available at [metalogue.loopy.codes](https://metalogue.loopy.codes).
+Integration tests and benchmarks (under [`tests`](/tests/) and [`benches`](/benches/) respectively) currently provide the best summary of available features.
 
-> [!NOTE]
-> Wait, `loopy.codes`?
-> Shouldn't GPU kernels explicitly avoid loops in favor of dispatching across many threads?
-> Isn't that the whole point of parallel programming?
->
-> Yes, and yes!
-> The name `loopy.codes` is a playful reference to outputs of astronomy software: *loopy* orbits.
-> For more information about the author, and the astronomy codes the author maintains, see the author's website: [loopy.codes](https://loopy.codes).
+You may ask: why `loopy.codes`?
+Shouldn't GPU kernels explicitly avoid large loops in favor of dispatching across many threads?
+Isn't that the whole point of parallel programming?
+The name `loopy.codes` is a playful reference to outputs of astronomy software: *loopy* orbits.
+For more information about the author, and the astronomy codes the author maintains, see the author's website: [loopy.codes](https://loopy.codes).
