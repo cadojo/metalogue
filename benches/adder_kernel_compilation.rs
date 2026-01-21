@@ -13,9 +13,9 @@ fn acquire_default_gpu(c: &mut Criterion) {
 
 fn add_kernel_compilation(c: &mut Criterion) {
     let device = Device::acquire().expect("failed to acquire GPU device");
-    let kernel_path = Path::new("../kernels/adder.metal");
+    let kernel_path = Path::new(env!("CARGO_MANIFEST_DIR")).join("kernels/adder.metal");
     let kernel =
-        Kernel::from_file(kernel_path, "add_arrays").expect("failed to load kernel from file");
+        Kernel::from_file(&kernel_path, "add_arrays").expect("failed to load kernel from file");
 
     c.bench_function("add_kernel_compilation", |b| {
         b.iter(|| kernel.compile(&device).expect("failed to compile kernel"))

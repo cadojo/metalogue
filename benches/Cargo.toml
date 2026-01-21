@@ -10,4 +10,3 @@ criterion.workspace = true
 [[bench]]
 name = "adder_kernel_compilation"
 path = "adder_kernel_compilation.rs"
-harness = false
