@@ -5,6 +5,14 @@ description = "Notes on Parallel Programming for Apple Silicon"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "metalogue",
     "mlx>=0.30.3",
-    "quarto>=0.1.0",
 ]
+
+[dependency-groups]
+dev = [
+    "metalogue",
+]
+
+[tool.uv.sources]
+metalogue = { path = "../", editable = true }
