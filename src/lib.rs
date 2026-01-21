@@ -14,7 +14,6 @@ pub use objc2_foundation;
 pub use objc2_metal;
 
 // Python bindings - these will be implemented later
-#[cfg(feature = "pyo3")]
 mod python {
     use pyo3::prelude::*;
 

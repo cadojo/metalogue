@@ -1,25 +1,24 @@
 [package]
 name = "metalogue"
 version = "0.0.1"
-publish = false
+publish = false # not yet!
 edition = "2024"
 
 [lib]
 name = "metalogue"
-# cdylib for Python bindings, rlib for Rust usage
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-# Core Metal dependencies
 objc2-metal = "0.3.2"
 objc2 = "0.6.3"
 objc2-foundation = "0.3.2"
 block2 = "0.6.1"
 dispatch2 = "0.3.0"
+pyo3 = "0.27.2"
 
-# Python bindings (optional)
-pyo3 = { version = "0.27.0", optional = true }
-criterion = { version = "0.7", features = ["html_reports"] }
+[dev-dependencies]
+criterion = "0.8.1"
 
-[features]
-default = ["pyo3"]
+[[bench]]
+name = "adder_kernel_compilation"
+harness = false
