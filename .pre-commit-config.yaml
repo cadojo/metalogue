@@ -10,7 +10,7 @@ repos:
       - id: check-json
       - id: check-added-large-files
   - repo: https://github.com/rvben/rumdl-pre-commit
-    rev: v0.0.221
+    rev: v0.1.0
     hooks:
       - id: rumdl
         args: [--config, .rumdl.toml, --fix]
@@ -23,4 +23,4 @@ repos:
     rev: v1.1.10
     hooks:
       - id: committed
-        args: [--config, .committed.toml]
+        args: [--config, .committed.toml, --commit-file]

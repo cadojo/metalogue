@@ -43,7 +43,7 @@ Example:
     >>> print(buffer_result.to_list())  # [11.0, 22.0, 33.0, 44.0]
 """
 
-from .metalogue import (
+from metalogue.pyo3 import (
     BufferF32,
     BufferI32,
     ComputePass,
