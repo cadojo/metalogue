@@ -1,20 +1,7 @@
-use mlx_rs;
+//! MLX-backend to `metalogue`.
 
-/// A thin wrapper around `mlx_rs::Device`.
-pub struct Device(pub mlx_rs::Device);
+#[cfg(not(all(target_os = "macos", target_arch = "aarch64")))]
+compile_error!("This library only works on Apple Silicon platforms.");
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        for idx in 0..10 {
-            let cpu = Device(mlx_rs::Device::new(mlx_rs::DeviceType::Cpu, idx));
-            let gpu = Device(mlx_rs::Device::new(mlx_rs::DeviceType::Gpu, idx));
-
-            assert!(cpu.0.get_index().is_ok_and(|id| { id == idx }));
-            assert!(gpu.0.get_index().is_ok_and(|id| { id == idx }));
-        }
-    }
-}
+#[cfg(all(target_os = "macos", target_arch = "aarch64"))]
+include!("metalogue_mlx.rs");

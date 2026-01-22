@@ -4,5 +4,5 @@ version = "0.0.1"
 edition.workspace = true
 license.workspace = true
 
-[dependencies]
+[target.'cfg(all(target_os = "macos", target_arch = "aarch64"))'.dependencies]
 mlx-rs.workspace = true

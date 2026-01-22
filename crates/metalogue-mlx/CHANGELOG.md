@@ -5,4 +5,4 @@
 
 ### Features
 
-* Add skeleton structure for `metalogue-mlx` backend ([7e61bbc](https://github.com/cadojo/metalogue/commit/7e61bbc203a2f054cb7d187ab51ca134c357a47a))
+* Add skeleton structure for `metalogue-mlx` backend ([7e61bbc](https://github.com/loopy-codes/metalogue/commit/7e61bbc203a2f054cb7d187ab51ca134c357a47a))

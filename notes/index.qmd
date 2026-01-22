@@ -23,7 +23,7 @@ Alternatively, you can try executing each example in your own Python environment
 
 
 ```{.bash #lst-setup lst-cap="Installation Instructions"}
-git clone -b stable https://github.com/cadojo/metalogue
+git clone -b stable https://github.com/loopy-codes/metalogue
 cd metalogue
 uv sync
 uv run ipython
