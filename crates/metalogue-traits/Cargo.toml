@@ -2,5 +2,6 @@
 name = "metalogue-traits"
 version = "0.0.1"
 edition.workspace = true
+license.workspace = true
 
 [dependencies]

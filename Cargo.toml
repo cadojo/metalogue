@@ -4,6 +4,7 @@ members = [".", "crates/*"]
 
 [workspace.package]
 edition = "2024"
+license = "MIT"
 
 [workspace.dependencies]
 objc2-metal = "0.3.2"
@@ -18,6 +19,7 @@ criterion = "0.8.1"
 name = "metalogue"
 version = "0.0.2"
 edition.workspace = true
+license.workspace = true
 
 [lib]
 name = "metalogue"
