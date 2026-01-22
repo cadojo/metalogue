@@ -1,4 +1,4 @@
-use criterion::{Criterion, criterion_group, criterion_main};
+use criterion::{criterion_group, criterion_main, Criterion};
 use metalogue::{Device, Kernel};
 
 fn acquire_default_gpu(c: &mut Criterion) {
@@ -12,7 +12,7 @@ fn acquire_default_gpu(c: &mut Criterion) {
 
 fn add_kernel_compilation(c: &mut Criterion) {
     let device = Device::acquire().expect("failed to acquire GPU device");
-    let kernel_source = include_str!("../../../kernels/adder.metal");
+    let kernel_source = include_str!("../kernels/adder.metal");
     let kernel = Kernel::new(kernel_source, "add_arrays");
 
     c.bench_function("add_kernel_compilation", |b| {

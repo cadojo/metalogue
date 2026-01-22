@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["crates/*"]
+members = [".", "crates/*"]
 
 [workspace.package]
 edition = "2024"
@@ -13,3 +13,34 @@ block2 = "0.6.1"
 pyo3 = "0.27.2"
 mlx-rs = "0.25.3"
 criterion = "0.8.1"
+
+[package]
+name = "metalogue"
+version = "0.0.1"
+edition.workspace = true
+
+[lib]
+name = "metalogue"
+crate-type = ["cdylib", "rlib"]
+
+# This project cannot compile on machines without Apple Silicon.
+# For this reason, we conditionally remove dependencies when the
+# target architecture is incorrect. This allows a hand-written
+# compiler error (in `metalogue/lib.rs`) to show users the true
+# compilation issue: that their target architecture is incompatible.
+# Otherwise, users would see a slew of compilation failures around
+# ObjectiveC, and *their* target architecture error messages. We
+# want to show *ours*!
+[target.'cfg(all(target_os = "macos", target_arch = "aarch64"))'.dependencies]
+objc2-metal.workspace = true
+objc2.workspace = true
+objc2-foundation.workspace = true
+block2.workspace = true
+pyo3.workspace = true
+
+[dev-dependencies]
+criterion.workspace = true
+
+[[bench]]
+name = "adder_kernel_compilation"
+harness = false

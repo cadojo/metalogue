@@ -13,8 +13,7 @@ classifiers = [
 dynamic = ["version"]
 
 [tool.maturin]
-manifest-path = "crates/metalogue/Cargo.toml"
-python-source = "crates/metalogue/pyo3"
+python-source = "pyo3"
 
 [dependency-groups]
 dev = [

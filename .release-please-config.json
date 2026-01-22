@@ -12,10 +12,9 @@
   "initial-version": "0.0.1",
   "separate-pull-requests": true,
   "packages": {
-    "crates/metalogue": {
+    ".": {
       "include-component-in-tag": false,
-      "changelog-path": "../../CHANGELOG.md",
-      "extra-files": ["../../pyproject.toml"]
+      "extra-files": ["pyproject.toml"]
     },
     "crates/metalogue-mlx": {}
   },
