@@ -5,7 +5,7 @@ use std::marker::PhantomData;
 use objc2_metal::{MTLBuffer, MTLDevice};
 
 use super::devices::Device;
-use crate::error::Error;
+use metalogue_traits::error::Error;
 
 /// A GPU buffer containing elements of type `T`.
 ///

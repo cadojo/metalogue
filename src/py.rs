@@ -4,13 +4,12 @@ use pyo3::exceptions::PyRuntimeError;
 use pyo3::prelude::*;
 use std::path::PathBuf;
 
-use crate::{Error, core};
+use crate::core;
+use metalogue_traits::error::Error;
 
 /// Convert a Rust Error to a Python exception
-impl From<Error> for PyErr {
-    fn from(err: Error) -> Self {
-        PyRuntimeError::new_err(err.to_string())
-    }
+fn error_to_pyerr(err: Error) -> PyErr {
+    PyRuntimeError::new_err(err.to_string())
 }
 
 /// A handle to a GPU device.
@@ -43,7 +42,7 @@ impl Device {
     /// ```
     #[staticmethod]
     fn acquire() -> PyResult<Self> {
-        let inner = core::Device::acquire()?;
+        let inner = core::Device::acquire().map_err(error_to_pyerr)?;
         Ok(Self { inner })
     }
 
@@ -67,7 +66,10 @@ impl Device {
     /// pass = device.new_compute_pass(pipeline)
     /// ```
     fn new_compute_pass(&self, pipeline: &Pipeline) -> PyResult<ComputePass> {
-        let inner = self.inner.new_compute_pass(&pipeline.inner)?;
+        let inner = self
+            .inner
+            .new_compute_pass(&pipeline.inner)
+            .map_err(error_to_pyerr)?;
         Ok(ComputePass { inner: Some(inner) })
     }
 
@@ -140,7 +142,7 @@ impl Kernel {
     #[staticmethod]
     fn from_file(filepath: String, function_name: String) -> PyResult<Self> {
         let path = PathBuf::from(filepath);
-        let inner = core::Kernel::from_file(&path, &function_name)?;
+        let inner = core::Kernel::from_file(&path, &function_name).map_err(error_to_pyerr)?;
         Ok(Self { inner })
     }
 
@@ -161,7 +163,10 @@ impl Kernel {
     /// pipeline = kernel.to_pipeline(device)
     /// ```
     fn to_pipeline(&self, device: &Device) -> PyResult<Pipeline> {
-        let inner = self.inner.to_pipeline(&device.inner)?;
+        let inner = self
+            .inner
+            .to_pipeline(&device.inner)
+            .map_err(error_to_pyerr)?;
         Ok(Pipeline { inner })
     }
 
@@ -230,7 +235,8 @@ impl BufferF32 {
     /// ```
     #[staticmethod]
     fn from_list(device: &Device, data: Vec<f32>) -> PyResult<Self> {
-        let inner = core::Buffer::from_slice(&device.inner, &data)?;
+        let inner =
+            core::Buffer::<f32>::from_slice(&device.inner, &data).map_err(error_to_pyerr)?;
         Ok(Self { inner })
     }
 
@@ -255,7 +261,7 @@ impl BufferF32 {
     /// ```
     #[staticmethod]
     fn with_len(device: &Device, len: usize) -> PyResult<Self> {
-        let inner = core::Buffer::with_len(&device.inner, len)?;
+        let inner = core::Buffer::<f32>::with_len(&device.inner, len).map_err(error_to_pyerr)?;
         Ok(Self { inner })
     }
 
@@ -340,7 +346,8 @@ impl BufferI32 {
     /// ```
     #[staticmethod]
     fn from_list(device: &Device, data: Vec<i32>) -> PyResult<Self> {
-        let inner = core::Buffer::from_slice(&device.inner, &data)?;
+        let inner =
+            core::Buffer::<i32>::from_slice(&device.inner, &data).map_err(error_to_pyerr)?;
         Ok(Self { inner })
     }
 
@@ -365,7 +372,7 @@ impl BufferI32 {
     /// ```
     #[staticmethod]
     fn with_len(device: &Device, len: usize) -> PyResult<Self> {
-        let inner = core::Buffer::with_len(&device.inner, len)?;
+        let inner = core::Buffer::<i32>::with_len(&device.inner, len).map_err(error_to_pyerr)?;
         Ok(Self { inner })
     }
 

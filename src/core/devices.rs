@@ -4,7 +4,7 @@ use objc2_metal::{MTLCommandBuffer, MTLCommandQueue, MTLComputeCommandEncoder, M
 
 use super::compute::ComputePass;
 use super::kernels::Pipeline;
-use crate::error::Error;
+use metalogue_traits::error::Error;
 
 /// A handle to a GPU device.
 pub struct Device(objc2::rc::Retained<objc2::runtime::ProtocolObject<dyn objc2_metal::MTLDevice>>);

@@ -5,7 +5,7 @@ use std::path::Path;
 use objc2_metal::{MTLDevice, MTLLibrary};
 
 use super::devices::Device;
-use crate::error::Error;
+use metalogue_traits::error::Error;
 
 /// A Metal kernel source with an associated function name.
 pub struct Kernel {
