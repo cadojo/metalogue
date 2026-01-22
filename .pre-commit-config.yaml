@@ -1,4 +1,4 @@
-exclude: ^(CHANGELOG.md)
+exclude: ^(.*/)?(CHANGELOG\.md)$
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
@@ -12,7 +12,7 @@ repos:
     rev: v0.0.221
     hooks:
       - id: rumdl
-        args: [--force-exclude, --config, .rumdl.toml, --fix]
+        args: [--config, .rumdl.toml, --fix]
   - repo: https://github.com/crate-ci/typos
     rev: v1.42.1
     hooks:
