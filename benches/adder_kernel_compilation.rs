@@ -18,7 +18,11 @@ fn add_kernel_compilation(c: &mut Criterion) {
         Kernel::from_file(&kernel_path, "add_arrays").expect("failed to load kernel from file");
 
     c.bench_function("add_kernel_compilation", |b| {
-        b.iter(|| kernel.compile(&device).expect("failed to compile kernel"))
+        b.iter(|| {
+            kernel
+                .to_pipeline(&device)
+                .expect("failed to compile kernel")
+        })
     });
 }
 

@@ -102,9 +102,7 @@ fn test_add_arrays_safe() {
 
     // compile kernel into pipeline
     let pipeline = Kernel::new(ADDER_METAL, "add_arrays")
-        .compile(&device)
-        .expect("failed to compile kernel")
-        .to_pipeline()
+        .to_pipeline(&device)
         .expect("failed to create pipeline");
 
     // create buffers
@@ -115,9 +113,8 @@ fn test_add_arrays_safe() {
     let buffer_result: Buffer<f32> =
         Buffer::with_len(&device, 4).expect("failed to create result buffer");
 
-    // create command queue and compute pass
-    let queue = device.create_queue().expect("failed to create queue");
-    let pass = queue
+    // create compute pass
+    let pass = device
         .new_compute_pass(&pipeline)
         .expect("failed to create compute pass");
 

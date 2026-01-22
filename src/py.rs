@@ -28,10 +28,10 @@ mod python {
             Ok(Self { inner })
         }
 
-        /// Creates a new command queue for submitting work to this device.
-        fn create_queue(&self) -> PyResult<CommandQueue> {
-            let inner = self.inner.create_queue()?;
-            Ok(CommandQueue { inner })
+        /// Creates a new compute pass for encoding GPU commands.
+        fn new_compute_pass(&self, pipeline: &Pipeline) -> PyResult<ComputePass> {
+            let inner = self.inner.new_compute_pass(&pipeline.inner)?;
+            Ok(ComputePass { inner: Some(inner) })
         }
 
         fn __repr__(&self) -> String {
@@ -64,9 +64,8 @@ mod python {
         }
 
         /// Compiles this kernel into a pipeline on the given device.
-        fn compile(&self, device: &Device) -> PyResult<Pipeline> {
-            let function = self.inner.compile(&device.inner)?;
-            let inner = function.to_pipeline()?;
+        fn to_pipeline(&self, device: &Device) -> PyResult<Pipeline> {
+            let inner = self.inner.to_pipeline(&device.inner)?;
             Ok(Pipeline { inner })
         }
 
@@ -180,25 +179,6 @@ mod python {
         }
     }
 
-    /// A command queue for submitting work to the GPU.
-    #[pyclass]
-    pub struct CommandQueue {
-        inner: core::CommandQueue,
-    }
-
-    #[pymethods]
-    impl CommandQueue {
-        /// Creates a new compute pass for encoding GPU commands.
-        fn new_compute_pass(&self, pipeline: &Pipeline) -> PyResult<ComputePass> {
-            let inner = self.inner.new_compute_pass(&pipeline.inner)?;
-            Ok(ComputePass { inner: Some(inner) })
-        }
-
-        fn __repr__(&self) -> String {
-            "CommandQueue()".to_string()
-        }
-    }
-
     /// A compute pass for encoding and dispatching GPU work.
     #[pyclass(unsendable)]
     pub struct ComputePass {
@@ -300,7 +280,7 @@ mod python {
         m.add_class::<Pipeline>()?;
         m.add_class::<BufferF32>()?;
         m.add_class::<BufferI32>()?;
-        m.add_class::<CommandQueue>()?;
+
         m.add_class::<ComputePass>()?;
         m.add_class::<Submission>()?;
         Ok(())
