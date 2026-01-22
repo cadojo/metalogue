@@ -478,6 +478,8 @@ version = "0.0.2"
 dependencies = [
  "block2",
  "criterion",
+ "metalogue-mlx",
+ "metalogue-traits",
  "objc2",
  "objc2-foundation",
  "objc2-metal",

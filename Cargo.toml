@@ -39,6 +39,8 @@ objc2.workspace = true
 objc2-foundation.workspace = true
 block2.workspace = true
 pyo3.workspace = true
+metalogue-mlx = { path = "crates/metalogue-mlx", version = "0.0.1" }
+metalogue-traits = { path = "crates/metalogue-traits", version = "0.0.1" }
 
 [dev-dependencies]
 criterion.workspace = true
