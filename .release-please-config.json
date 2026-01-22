@@ -15,7 +15,8 @@
     ".": {
       "pull-request-title-pattern": "chore(release): v${version}",
       "include-component-in-tag": false,
-      "extra-files": ["pyproject.toml"]
+      "extra-files": ["pyproject.toml"],
+      "exclude-paths": ["crates"]
     },
     "crates/metalogue-mlx": {
       "release-as": "0.0.1"
