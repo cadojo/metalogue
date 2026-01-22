@@ -1,5 +1,7 @@
 //! Interfaces for GPU programming with Apple Silicon.
 
-pub trait Device {
-    fn acquire() -> Self;
-}
+#[cfg(not(all(target_os = "macos", target_arch = "aarch64")))]
+compile_error!("This library only works on Apple Silicon platforms.");
+
+#[cfg(all(target_os = "macos", target_arch = "aarch64"))]
+include!("metalogue_traits.rs");
