@@ -1,6 +1,5 @@
 use criterion::{Criterion, criterion_group, criterion_main};
 use metalogue::{Device, Kernel};
-use std::path::Path;
 
 fn acquire_default_gpu(c: &mut Criterion) {
     c.bench_function("acquire_default_gpu", |b| {
@@ -13,9 +12,8 @@ fn acquire_default_gpu(c: &mut Criterion) {
 
 fn add_kernel_compilation(c: &mut Criterion) {
     let device = Device::acquire().expect("failed to acquire GPU device");
-    let kernel_path = Path::new(env!("CARGO_MANIFEST_DIR")).join("kernels/adder.metal");
-    let kernel =
-        Kernel::from_file(&kernel_path, "add_arrays").expect("failed to load kernel from file");
+    let kernel_source = include_str!("../../../kernels/adder.metal");
+    let kernel = Kernel::new(kernel_source, "add_arrays");
 
     c.bench_function("add_kernel_compilation", |b| {
         b.iter(|| {

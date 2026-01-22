@@ -4,15 +4,17 @@
   "bump-minor-pre-major": true,
   "bump-patch-for-minor-pre-major": true,
   "draft": false,
-  "include-component-in-tag": false,
+  "include-component-in-tag": true,
   "include-v-in-tag": true,
   "pull-request-title-pattern": "release: v${version}",
   "prerelease": true,
   "release-type": "rust",
   "initial-version": "0.0.1",
   "packages": {
-    ".": {
-      "extra-files": ["pyproject.toml"]
+    "crates/metalogue": {
+      "include-component-in-tag": false,
+      "changelog-path": "../../CHANGELOG.md",
+      "extra-files": ["../../pyproject.toml"]
     }
   },
   "plugins": [
