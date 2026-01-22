@@ -6,16 +6,18 @@
   "draft": false,
   "include-component-in-tag": true,
   "include-v-in-tag": true,
-  "pull-request-title-pattern": "release: v${version}",
+  "pull-request-title-pattern": "release: ${component}-v${version}",
   "prerelease": true,
   "release-type": "rust",
   "initial-version": "0.0.1",
+  "separate-pull-requests": true,
   "packages": {
     "crates/metalogue": {
       "include-component-in-tag": false,
       "changelog-path": "../../CHANGELOG.md",
       "extra-files": ["../../pyproject.toml"]
-    }
+    },
+    "crates/metalogue-mlx": {}
   },
   "plugins": [
     {
