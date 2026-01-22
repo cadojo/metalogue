@@ -9,6 +9,7 @@ on:
       - edited
       - reopened
       - synchronize
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -42,6 +43,7 @@ jobs:
   validate-pr-title:
     name: Validate squash commit message
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
