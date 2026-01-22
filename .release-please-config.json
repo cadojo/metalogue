@@ -11,6 +11,7 @@
   "release-type": "rust",
   "initial-version": "0.0.1",
   "separate-pull-requests": true,
+  "draft-pull-request": true,
   "packages": {
     ".": {
       "pull-request-title-pattern": "chore(release): v${version}",
