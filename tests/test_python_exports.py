@@ -21,7 +21,6 @@ class TestMetalogueExports:
             "Pipeline",
             "BufferF32",
             "BufferI32",
-            "CommandQueue",
             "ComputePass",
             "Submission",
         ]
@@ -57,7 +56,7 @@ kernel void add_arrays(
 @pytest.fixture(scope="module")
 def pipeline(device, kernel):
     """Fixture to compile a pipeline from the kernel."""
-    return kernel.compile(device)
+    return kernel.to_pipeline(device)
 
 
 @pytest.fixture
@@ -76,10 +75,10 @@ class TestDevice:
         """Test that a device can be acquired."""
         assert device is not None
 
-    def test_device_create_queue(self, device):
-        """Test that a command queue can be created."""
-        queue = device.create_queue()
-        assert queue is not None
+    def test_device_create_compute_pass(self, device, pipeline):
+        """Test that a compute pass can be created."""
+        compute_pass = device.new_compute_pass(pipeline)
+        assert compute_pass is not None
 
 
 class TestKernel:
@@ -135,15 +134,13 @@ class TestKernelExecution:
 
     def test_compute_pass_creation(self, device, pipeline):
         """Test creating a compute pass."""
-        queue = device.create_queue()
-        compute_pass = queue.new_compute_pass(pipeline)
+        compute_pass = device.new_compute_pass(pipeline)
         assert compute_pass is not None
 
     def test_buffer_binding(self, device, pipeline, test_buffers):
         """Test binding buffers to a compute pass."""
         buffer_a, buffer_b, buffer_result = test_buffers
-        queue = device.create_queue()
-        compute_pass = queue.new_compute_pass(pipeline)
+        compute_pass = device.new_compute_pass(pipeline)
 
         # Should not raise any exceptions
         compute_pass.bind_f32(0, buffer_a)
@@ -153,8 +150,7 @@ class TestKernelExecution:
     def test_kernel_dispatch(self, device, pipeline, test_buffers):
         """Test dispatching a kernel."""
         buffer_a, buffer_b, buffer_result = test_buffers
-        queue = device.create_queue()
-        compute_pass = queue.new_compute_pass(pipeline)
+        compute_pass = device.new_compute_pass(pipeline)
 
         compute_pass.bind_f32(0, buffer_a)
         compute_pass.bind_f32(1, buffer_b)
@@ -166,8 +162,7 @@ class TestKernelExecution:
     def test_kernel_execution_and_results(self, device, pipeline, test_buffers):
         """Test full kernel execution and verify results."""
         buffer_a, buffer_b, buffer_result = test_buffers
-        queue = device.create_queue()
-        compute_pass = queue.new_compute_pass(pipeline)
+        compute_pass = device.new_compute_pass(pipeline)
 
         compute_pass.bind_f32(0, buffer_a)
         compute_pass.bind_f32(1, buffer_b)
