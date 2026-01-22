@@ -8,15 +8,12 @@ edition = "2024"
 name = "metalogue"
 crate-type = ["cdylib", "rlib"]
 
-[dependencies]
-pyo3 = "0.27.2"
-
 [target.'cfg(all(target_os = "macos", target_arch = "aarch64"))'.dependencies]
 objc2-metal = "0.3.2"
 objc2 = "0.6.3"
 objc2-foundation = "0.3.2"
 block2 = "0.6.1"
-dispatch2 = "0.3.0"
+pyo3 = "0.27.2"
 
 [dev-dependencies]
 criterion = "0.8.1"
