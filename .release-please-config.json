@@ -18,7 +18,8 @@
       "extra-files": ["pyproject.toml"],
       "exclude-paths": ["crates"]
     },
-    "crates/metalogue-mlx": {
+    "crates/metalogue-mlx": {},
+    "crates/metalogue-traits": {
       "release-as": "0.0.1"
     }
   },
