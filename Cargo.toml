@@ -25,6 +25,10 @@ license.workspace = true
 name = "metalogue"
 crate-type = ["cdylib", "rlib"]
 
+[features]
+default = ["mlx"]
+mlx = ["metalogue-mlx"]
+
 # This project cannot compile on machines without Apple Silicon.
 # For this reason, we conditionally remove dependencies when the
 # target architecture is incorrect. This allows a hand-written
@@ -39,7 +43,7 @@ objc2.workspace = true
 objc2-foundation.workspace = true
 block2.workspace = true
 pyo3.workspace = true
-metalogue-mlx = { path = "crates/metalogue-mlx", version = "0.0.1" }
+metalogue-mlx = { path = "crates/metalogue-mlx", version = "0.0.1", optional = true }
 metalogue-traits = { path = "crates/metalogue-traits", version = "0.0.1" }
 
 [dev-dependencies]

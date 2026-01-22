@@ -42,7 +42,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cargo-build-
       - name: Build and compile tests
-        run: cargo test --all-features --no-run # GPU access requires self-hosted runners
+        run: cargo test --no-default-features --no-run # Skip MLX feature which requires Apple GPU
       - uses: actions/setup-python@v5
         with:
           python-version-file: ".python-version"
@@ -54,7 +54,7 @@ jobs:
         uses: PyO3/maturin-action@v1
         with:
           target: ${{ matrix.platform.target }}
-          args: --release --out dist --find-interpreter
+          args: --release --out dist --find-interpreter --no-default-features
           sccache: ${{ !startsWith(github.ref, 'refs/tags/') }}
       - name: Upload wheels
         uses: actions/upload-artifact@v4
