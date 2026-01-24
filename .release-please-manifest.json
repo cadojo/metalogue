@@ -1,4 +1,4 @@
 {
   ".": "0.0.1",
-  "crates/metalogue-mlx": "0.0.0"
+  "crates/metalogue-mlx": "0.1.0"
 }
