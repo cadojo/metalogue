@@ -474,7 +474,7 @@ dependencies = [
 
 [[package]]
 name = "metalogue"
-version = "0.0.2"
+version = "0.0.3"
 dependencies = [
  "block2",
  "criterion",

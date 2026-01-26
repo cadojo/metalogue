@@ -1,5 +1,5 @@
 {
-  ".": "0.0.2",
+  ".": "0.0.3",
   "crates/metalogue-mlx": "0.0.1",
   "crates/metalogue-traits": "0.0.1"
 }
