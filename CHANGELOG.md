@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.4](https://github.com/loopy-codes/metalogue/compare/v0.0.3...v0.0.4) (2026-01-29)
+
+
+### Features
+
+* Add preliminary trait definitions to `metalogue-traits` ([20eceb6](https://github.com/loopy-codes/metalogue/commit/20eceb6fdc291346efd9bfa8ed75fda207522198))
+* Move `error` module into `metalogue-traits` ([20eceb6](https://github.com/loopy-codes/metalogue/commit/20eceb6fdc291346efd9bfa8ed75fda207522198))
+
 ## [0.0.3](https://github.com/loopy-codes/metalogue/compare/v0.0.2...v0.0.3) (2026-01-26)
 
 
