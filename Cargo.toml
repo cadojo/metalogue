@@ -11,7 +11,7 @@ objc2-metal = "0.3.2"
 objc2 = "0.6.3"
 objc2-foundation = "0.3.2"
 block2 = "0.6.1"
-pyo3 = "0.27.2"
+pyo3 = "0.29.0"
 mlx-rs = "0.25.3"
 criterion = "0.8.1"
 
